@@ -12,14 +12,14 @@ import {
   Fuel,
   Share2,
   Repeat,
-  Trophy,
+  Crown,
   MessageCircle,
-  ArrowDown,
   Coins,
   Briefcase,
   PieChart,
   UserRound,
-  Plus
+  Plus,
+  Star
 } from 'lucide-react';
 
 
@@ -361,10 +361,7 @@ const Nav = () => {
     visual: (
       <div className="relative flex items-center justify-center w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-r from-[#FFB800] to-[#ffda7d] opacity-10 rounded-full animate-pulse"></div>
-        <Trophy size={200} className="text-[#FFB800] relative z-10" fill="currentColor" />
-        <div className="absolute top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-xl z-20">
-          WIN BIG!
-        </div>
+        <Crown size={200} className="text-[#FFB800] relative z-10" fill="currentColor" />
         <div className="absolute top-10 right-20 w-3 h-3 bg-[#6A4DFF] rounded-full" />
         <div className="absolute bottom-20 left-20 w-4 h-4 bg-[#00C9A7] rounded-full" />
       </div>
@@ -421,6 +418,87 @@ const Nav = () => {
     </section>
     );
   };
+
+const UserExperience = () => {
+  return (
+    <section id="user-experience" className="py-32 bg-white relative overflow-hidden">
+      
+      {/* Subtle Background Glow */}
+      <div className="absolute inset-0 pointer-events-none opacity-25">
+        <div className="absolute top-[-15%] left-[20%] w-[380px] h-[380px] bg-gradient-to-br from-[#6A4DFF] to-[#8B6FFF] blur-[110px]" />
+        <div className="absolute bottom-[-15%] right-[10%] w-[300px] h-[300px] bg-gradient-to-br from-[#FFB800] to-[#ffd770] blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-6">
+            Designed for the Way You Actually Save
+          </h2>
+          <p className="text-[#6E6E6E] text-lg leading-relaxed">
+            Not a dashboard. Not a graph. An experience that guides your habits instead of overwhelming them.
+          </p>
+        </div>
+
+        {/* Experience Blocks */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+          {/* Experience 1 */}
+          <div className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
+            <div className="relative h-40 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full rounded-2xl bg-[#6A4DFF]/10 flex items-center justify-center text-[#6A4DFF] shadow-inner z-10">
+                <Target size={300} />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white backdrop-blur-xl pointer-events-none"></div>
+            </div>
+            <div className="px-10 pb-10 pt-6">
+              <h3 className="text-xl font-bold text-[#6A4DFF] mb-3">Clear Mental Anchors</h3>
+              <p className="text-[#6E6E6E] leading-relaxed">
+                Goals aren’t buried inside tabs. Each saving action reconnects to why you started, keeping motivation alive.
+              </p>
+            </div>
+          </div>
+
+          {/* Experience 2 */}
+          <div className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
+            <div className="relative h-40 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full rounded-2xl bg-[#FFB800]/10 flex items-center justify-center text-[#FFB800] shadow-inner z-10">
+                <Star size={300} />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white backdrop-blur-xl pointer-events-none"></div>
+            </div>
+            <div className="px-10 pb-10 pt-6">
+              <h3 className="text-xl font-bold text-[#FFB800] mb-3">Feel Appreciated: Solo or Social</h3>
+              <p className="text-[#6E6E6E] leading-relaxed">
+                Every action earns recognition. Splice makes your effort feel appreciated — be it solo or social plans.
+              </p>
+            </div>
+          </div>
+
+          {/* Experience 3 */}
+          <div className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
+            <div className="relative h-40 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full rounded-2xl bg-[#00C9A7]/10 flex items-center justify-center text-[#00C9A7] shadow-inner z-10">
+                <Briefcase size={300} />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white backdrop-blur-xl pointer-events-none"></div>
+            </div>
+            <div className="px-10 pb-10 pt-6">
+              <h3 className="text-xl font-bold text-[#00C9A7] mb-3">Friction Doesn’t Exist Here</h3>
+              <p className="text-[#6E6E6E] leading-relaxed">
+                No financial jargon. No decision fatigue. Everything auto-adjusts while you focus on living, not calculating.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 
   const BusinessModel = () => (
     <section id="business-model" className="py-32 bg-white relative overflow-hidden">
@@ -524,7 +602,7 @@ const Nav = () => {
   const Metrics = () => (
     <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold mb-12">Measuring What Matters</h2>
+            <h2 className="text-4xl font-bold mb-12">Measuring What Matters</h2>
             
             <div className="relative w-64 h-64 mx-auto mb-12">
                 <svg className="w-full h-full transform -rotate-90">
@@ -567,7 +645,7 @@ const Nav = () => {
   const Testimonials = () => (
     <section id="stories" className="py-32 bg-[#F2F2F7] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">Real Goals. Real Results. Real Experiences</h2>
+            <h2 className="text-4xl font-bold text-center mb-16">Real Goals. Real Results. Real Experiences.</h2>
             <div className="flex flex-col md:flex-row gap-8">
                 {[
                     { q: "We saved ₹2L for Goa and got 20% off flights. Splice rewards actually matched what we needed.", n: "Priya & Squad", g: "Group Trip", c: "#6A4DFF" },
@@ -663,6 +741,7 @@ const Nav = () => {
       <Hero />
       <Comparison />
       <StoryFlow />
+      <UserExperience />
       <BusinessModel />
       <Benefits />
       <Metrics />
