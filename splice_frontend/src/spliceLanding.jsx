@@ -22,10 +22,6 @@ import {
   Plus
 } from 'lucide-react';
 
-/**
- * Splice Landing Page
- * Design Philosophy: Immersive, storytelling, neumorphic, 3D-feel without WebGL overhead.
- */
 
 const SpliceLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -72,31 +68,62 @@ const SpliceLanding = () => {
     </div>
   );
 
-  const Nav = () => (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#F2F2F7]/80 backdrop-blur-md border-b border-white/20">
+const Nav = () => {
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+
+      // Hide when scrolling down, show when scrolling up
+      if (currentY > lastScrollY && currentY > 80) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+
+      setLastScrollY(currentY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 
+        bg-[#F2F2F7]/80 backdrop-blur-md border-b border-white/20
+        transition-transform duration-300
+        ${hidden ? "-translate-y-full" : "translate-y-0"}
+      `}
+    >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Logo />
         <div className="hidden md:flex items-center gap-8">
           {[
-            { label: 'How It Works For You', id: 'how-it-works' },
-            { label: 'How It Works For Us', id: 'business-model' },
-            { label: 'Experiences', id: 'stories' }
+            { label: "How It Works For You", id: "how-it-works" },
+            { label: "How It Works For Us", id: "business-model" },
+            { label: "Experiences", id: "stories" },
           ].map((item) => (
-            <button 
-              key={item.label} 
+            <button
+              key={item.label}
               onClick={() => scrollToSection(item.id)}
               className="text-[#6E6E6E] hover:text-[#6A4DFF] font-medium transition-colors"
             >
               {item.label}
             </button>
           ))}
-          <button className={`px-6 py-2.5 rounded-full bg-[#6A4DFF] text-white font-bold hover:bg-[#1E1E1E] transition-all duration-300 ${styles.neumorphic}`}>
+          <button
+            className={`px-6 py-2.5 rounded-full bg-[#6A4DFF] text-white font-bold hover:bg-[#1E1E1E] transition-all duration-300 ${styles.neumorphic}`}
+          >
             App Coming Soon
           </button>
         </div>
       </div>
     </nav>
   );
+};
 
   const Hero = () => (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-[#F2F2F7]">
@@ -105,7 +132,7 @@ const SpliceLanding = () => {
         <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#FFB800] to-transparent blur-[80px]" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-6 mt-10">
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-6 md:mt-32">
         <div className="inline-block mb-6 px-4 py-1 rounded-full bg-white/50 border border-[#6A4DFF]/20 text-[#6A4DFF] font-semibold text-sm animate-fade-in-up">
           ✨ The new standard for targeted savings
         </div>
